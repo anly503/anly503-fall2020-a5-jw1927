@@ -1,9 +1,35 @@
 ---
-title: "My Website"
+title: "Interactive visualizations"
 ---
 
-Hello, Website!
+<font size="4">**Question 1:**</font>
 
-For more information about simple R Markdown websites, please read the documentation at https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html.
+<font size="3">What are three households' power consumption of different appliances during time on Thanksgiving Day in 2012 (11/22/2012)? Which appliances did they use and when did they use them?</font>
 
-Please also note that simple R Markdown sites are _not_ based on **blogdown**. They are probably good for websites with only a few Rmd documents. For larger-scale and more sophisticated websites (such as blogs), you may want to use **blogdown** instead: https://github.com/rstudio/blogdown.
+<font size="4">**Question 2:**</font>
+
+<font size="3">Which appliances did three households use most respectively on Thanksgiving Day in 2012?</font>
+
+<font size="4">**Rationale for my design decisions:**</font>
+
+<font size="3">I chose to create line graphs to see the trend of power consumption of different appliances during time and bar charts to see the distribution of power consumption among appliances.</font>
+
+<font size="3">I chose to create three facets for each graphic, each facet represents a household. In a facet, a household's power consumption of different appliances during time or whole power consumption of appliances are displayed. Different colors represent different appliances in a facet and same color represents same appliance among facets.</font>
+
+<font size="3">For plotly graphic, the interaction techniques that I used are details-on-demand and zooming. Users can obtain the details by hovering their mouse over the visualization, including appliance, householdID, time and power consumption. In addition, by selecting a small area, users can zoom in and zoom out to explore the visualization.</font>
+
+```{r}
+htmltools::includeHTML("plotly.html")
+```
+
+<font size="3">This graphic shows that except fridge and freezer, household 4 used microwave and kitchen appliances for multiple times, especially between 11:30 to 12:00. Household 5 used coffee machine at around 6:30, 12:15 and 19:00, and household 6 used kettle at around 0 o'clock. Besides, household 4 and 6 did some entertainment in the afternoon or evening and household 5 did some work in the afternoon (used PC).</font>
+
+<font size="3">The interaction technique that I used in altair graphic is details-on-demand. By hovering the mouse over the visualization, users can obtain exact amounts of power consumption of different appliances.</font>
+
+```{r}
+htmltools::includeHTML("altair.html")
+```
+
+<font size="3">From this graphic, the power consumption of freezer of household 4 was extremely high. The power consumption of entertainment of household 4 and 6 was higher than fridge, which is an interesting finding. For household 5, the most power-consumed appliance was fridge, followed by PC.</font>
+
+<font size="3">I considered to create visualizations using data from 06/27/12 to 01/23/13 to see the trend of power consumption during days. However, the time frame is too large that it is hard to see the details. So I chose one day, that is, Thanksgiving Day, which is a memorable day, and created visualization about this day.</font>
