@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@4"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.0.2"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@3"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+      var spec = {"config": {"view": {"width": 400, "height": 300}, "title": {"anchor": "middle", "fontSize": 24, "offset": 15, "orient": "top"}}, "data": {"name": "data-e2095a44acc716cc661ad57a1fee770c"}, "mark": "bar", "encoding": {"color": {"type": "nominal", "field": "appliance"}, "column": {"type": "nominal", "field": "householdID"}, "x": {"type": "nominal", "field": "appliance"}, "y": {"type": "quantitative", "aggregate": "sum", "axis": {"title": "Power Consumption"}, "field": "consumption"}}, "title": "Bar charts of power consumption of different households", "width": 250, "$schema": "https://vega.github.io/schema/vega-lite/v3.0.2.json", "datasets": {"data-e2095a44acc716cc661ad57a1fee770c": [{"householdID": 4, "appliance": "Entertainment", "consumption": 3016275.3528414504}, {"householdID": 4, "appliance": "Freezer", "consumption": 16864756.105407868}, {"householdID": 4, "appliance": "Fridge", "consumption": 2165923.853290069}, {"householdID": 4, "appliance": "Kitchen appliances", "consumption": 1470799.2545807075}, {"householdID": 4, "appliance": "Microwave", "consumption": 1692088.565339965}, {"householdID": 4, "appliance": "Tablet", "consumption": 148585.36862992053}, {"householdID": 5, "appliance": "Coffee machine", "consumption": 404964.4329600222}, {"householdID": 5, "appliance": "Entertainment", "consumption": 0.0}, {"householdID": 5, "appliance": "Fridge", "consumption": 3928088.8893820564}, {"householdID": 5, "appliance": "Microwave", "consumption": 471025.8216302813}, {"householdID": 5, "appliance": "PC", "consumption": 3090682.0373031}, {"householdID": 5, "appliance": "Tablet", "consumption": 432029.73859977466}, {"householdID": 6, "appliance": "Coffee machine", "consumption": 8.83042}, {"householdID": 6, "appliance": "Entertainment", "consumption": 2076506.1547994632}, {"householdID": 6, "appliance": "Fridge", "consumption": 769351.675080059}, {"householdID": 6, "appliance": "Kettle", "consumption": 553430.8009999996}, {"householdID": 6, "appliance": "Lamp", "consumption": 0.0}, {"householdID": 6, "appliance": "Laptop", "consumption": 547895.896799989}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+
+  </script>
+</body>
+</html>
